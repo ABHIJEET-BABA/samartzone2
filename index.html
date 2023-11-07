@@ -1,0 +1,1530 @@
+<!DOCTYPE html>
+<html lang="en" style="overflow-x:hidden;" translate="no">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link href="https://owlcarousel2.github.io/OwlCarousel2/assets/owlcarousel/assets/owl.carousel.min.css"
+    rel="stylesheet">
+  <link href="https://owlcarousel2.github.io/OwlCarousel2/assets/owlcarousel/assets/owl.theme.default.min.css"
+    rel="stylesheet">
+  <script src="https://owlcarousel2.github.io/OwlCarousel2/assets/vendors/jquery.min.js">
+  </script>
+  <script src="https://owlcarousel2.github.io/OwlCarousel2/assets/owlcarousel/owl.carousel.js">
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Document</title>
+  <style>
+    body {
+      overflow: hidden;
+      /* Hide vertical scrollbar */
+
+    }
+
+    /*
+ * Made by Erik Terwan
+ * 24th of November 2015
+ * MIT License
+ *
+ *
+ * If you are thinking of using this in
+ * production code, beware of the browser
+ * prefixes.
+ */
+    .cursor {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      top: 50%;
+      left: 50%;
+      z-index: 999;
+      background-color: rgb(218, 218, 231);
+      border-radius: 50%;
+      pointer-events: none;
+      box-shadow: 0 0 20px #2696E8,
+        0 0 60px #2696E8,
+        0 0 100px #2696E8;
+      animation: colors 1s infinite;
+      transform: translate(-50%, -50%);
+      transition: all 0.2s ease;
+    }
+
+    @keyframes colors {
+      0% {
+        filter: hue-rotate(0deg);
+      }
+
+      100% {
+        filter: hue-rotate(360deg);
+      }
+    }
+
+    .cursor::before {
+      content: '';
+      position: absolute;
+      background: #2696E8;
+      width: 50px;
+      height: 50px;
+      opacity: 0.2;
+      transform: translate(-30%, -30%);
+      border-radius: 50%;
+    }
+
+
+    #menuToggle {
+      display: block;
+      position: relative;
+      top: 27rem;
+      left: 101rem;
+
+      z-index: 1;
+      color: black;
+
+      -webkit-user-select: none;
+      user-select: none;
+    }
+
+    #menuToggle a {
+      text-decoration: none;
+      color: #232323;
+
+      transition: color 0.3s ease;
+    }
+
+    #menuToggle a:hover {
+      color: tomato;
+    }
+
+
+    #menuToggle input {
+      display: block;
+      width: 40px;
+      height: 32px;
+      position: absolute;
+
+
+
+      cursor: pointer;
+
+      opacity: 0;
+      /* hide this */
+      z-index: 2;
+      /* and place it over the hamburger */
+
+      -webkit-touch-callout: none;
+    }
+
+    /*
+ * Just a quick hamburger
+ */
+    #menuToggle span {
+      display: block;
+      width: 33px;
+      height: 4px;
+      margin-bottom: 5px;
+      position: relative;
+
+      background: black;
+      border-radius: 3px;
+
+      z-index: 1;
+
+      transform-origin: 4px 0px;
+
+      transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
+        background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
+        opacity 0.55s ease;
+    }
+
+    #menuToggle span:first-child {
+      transform-origin: 0% 0%;
+    }
+
+    #menuToggle span:nth-last-child(2) {
+      transform-origin: 0% 100%;
+    }
+
+    /* 
+ * Transform all the slices of hamburger
+ * into a crossmark.
+ */
+    #menuToggle input:checked~span {
+      opacity: 1;
+      transform: rotate(45deg) translate(-2px, -1px);
+      background: #232323;
+    }
+
+    /*
+ * But let's hide the middle one.
+ */
+    #menuToggle input:checked~span:nth-last-child(3) {
+      opacity: 0;
+      transform: rotate(0deg) scale(0.2, 0.2);
+    }
+
+    /*
+ * Ohyeah and the last one should go the other direction
+ */
+    #menuToggle input:checked~span:nth-last-child(2) {
+      transform: rotate(-45deg) translate(0, -1px);
+    }
+
+    /*
+ * Make this absolute positioned
+ * at the top left of the screen
+ */
+    #menu {
+      position: absolute;
+      width: 240px;
+      margin: 100px -17rem;
+      padding: 30px;
+      padding-top: 30px;
+      margin-top: -11rem;
+
+      background: white;
+      list-style-type: none;
+      -webkit-font-smoothing: antialiased;
+      /* to stop flickering of text in safari */
+
+      transform-origin: 0% 0%;
+      transform: translate(120rem);
+
+      transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+    }
+
+    #menu li {
+      padding: 10px 0;
+      font-size: 22px;
+    }
+
+    /*
+ * And let's slide it in from the left
+ */
+    #menuToggle input:checked~ul {
+      transform: none;
+    }
+
+
+    .irrrguralshape {
+      position: absolute;
+      top: 30%;
+      left: 60%;
+    }
+
+    .irrrguralshape2 {
+      position: absolute;
+      top: 87%;
+      left: 5%;
+    }
+
+    $color-success: #28a745;
+    $color-danger: #dc3545;
+    $color-warning: #ffc107;
+    $color-info: #17a2b8;
+
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    #pop {
+      position: absolute;
+      top: 1rem;
+      left: 90rem;
+    }
+    
+    #pop2 {
+      position: absolute;
+      top: 3.5rem;
+      left: 90rem;
+    }
+
+    #pop3 {
+      position: absolute;
+      top: 6rem;
+      left: 90rem;
+    }
+
+    #pop4 {
+      position: absolute;
+      top: 9rem;
+      left: 90rem;
+    }
+
+    #pop-text1{
+      position: absolute;
+      top: 1rem;
+      left: 77rem;
+      width: 250px;
+
+    }
+
+    #pop-text2 {
+      position: absolute;
+      top: 3.5rem;
+      left: 80rem;
+      width: 150px;
+    }
+
+    #pop-text3 {
+      position: absolute;
+      top: 6rem;
+      left: 79rem;
+      width: 200px;
+    }
+
+    #pop-text4 {
+      position: absolute;
+      top: 9rem;
+      left: 79rem;
+      width: 250px;
+    }
+
+
+    button {
+      border: none;
+      background-color: transparent;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      border-width: 1px;
+      border-style: solid;
+      border-radius: 4px;
+      transition: all 0.2s;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+
+    .icon-hov ::before {
+      content: '';
+      position: absolute;
+      right: 2rem;
+      bottom: -10px;
+      background-color: #e91e63;
+      height: 2px;
+      box-sizing: border-box;
+      width: 50px;
+    }
+
+  
+
+
+
+
+
+
+
+    .info {
+      color: darken($color-info, 0%);
+      border-color: darken($color-info, 10%);
+      background-color: $color-info;
+
+      &:hover {
+        background-color: darken($color-info, 10%);
+        color: white;
+      }
+    }
+
+    /* message */
+    .msg {
+      width: 400px;
+      height: 200px;
+      background: rgb(138, 136, 135);
+      border-radius: 10px;
+      position: absolute;
+      top:6rem;
+      left: 60rem;
+      padding: 10px 20px;
+      border-radius: 5px;
+      color: white;
+      font-size: 14px;
+      font-weight: 800;
+      box-shadow: 50rem 0 14px rgba(0, 0, 0, 0.05) l
+    }
+
+    .icon {
+      position: relative;
+      transition: right 20s ease;
+    }
+
+    .pop h4::before {
+      content: '';
+      position: absolute;
+      
+      right: 3rem;
+      bottom: -10px;
+      background-color: #e91e63;
+      height: 2px;
+      box-sizing: border-box;
+      width: 50px;
+    }
+
+
+
+
+
+
+    .msg-success {
+      background-color: $color-success;
+    }
+
+    .msg-warning {
+      color: darken($color-warning, 30%);
+      background-color: $color-warning;
+    }
+
+    .msg-danger {
+      background-color: $color-danger;
+    }
+
+    .msg-info {
+      background-color: $color-info;
+    }
+
+    /*fade*/
+    .animate {
+      opacity: 0;
+      transition: all 1s;
+      -webkit-animation-duration: 1s;
+      animation-duration: 1s;
+      -webkit-animation-fill-mode: both;
+      animation-fill-mode: both;
+    }
+
+    .animate.active {
+      opacity: 1;
+      transform: translateX(-50%) translateY(-50%);
+    }
+
+    .slide-in-down {
+      transform: translateY(-100%) translateX(-50%);
+    }
+
+
+    animation circle 回る玉~4s ----------------------- */ .circle {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #3a6e9a;
+    }
+
+    .circle div {
+      position: absolute;
+      top: calc((25% - 10px));
+      left: calc((50% - 10px));
+      width: 20px;
+      height: 20px;
+      background: #fff;
+      border-radius: 50%;
+    }
+
+    .circle div:nth-child(1) {
+      animation: anim_01 2s forwards;
+    }
+
+    .circle div:nth-child(2) {
+      animation: move_01 2s 2s;
+    }
+
+    .circle div:nth-child(4) {
+      animation: move_03 2s 2s;
+    }
+
+    .circle div:nth-child(3) {
+      animation: move_02 2s 2s;
+    }
+
+    .circle div:nth-child(5) {
+      animation: move_04 2s 2s;
+    }
+
+    @keyframes anim_01 {
+      0% {
+        transform: scale(0);
+      }
+
+      20% {
+        transform: scale(3);
+      }
+
+      50% {
+        transform: scale(1);
+      }
+
+      90% {
+        transform: scale(5);
+      }
+
+      100% {
+        transform: scale(0);
+      }
+    }
+
+    @keyframes move_01 {
+      0% {
+        transform: translate(0) scale(0);
+      }
+
+      20% {
+        transform: translate(-100px, -100px) scale(1);
+      }
+
+      40% {
+        transform: translate(-100px, 100px) scale(1);
+      }
+
+      60% {
+        transform: translate(100px, 100px) scale(1);
+      }
+
+      80% {
+        transform: translate(100px, -100px) scale(1);
+      }
+
+      100% {
+        transform: translate(0) scale(1);
+      }
+    }
+
+    @keyframes move_02 {
+      0% {
+        transform: translate(0) scale(0);
+      }
+
+      20% {
+        transform: translate(-100px, 100px) scale(1);
+      }
+
+      40% {
+        transform: translate(100px, 100px) scale(1);
+      }
+
+      60% {
+        transform: translate(100px, -100px) scale(1);
+      }
+
+      80% {
+        transform: translate(-100px, -100px) scale(1);
+      }
+
+      100% {
+        transform: translate(0) scale(1);
+      }
+    }
+
+    @keyframes move_03 {
+      0% {
+        transform: translate(0px) scale(0);
+      }
+
+      20% {
+        transform: translate(100px, 100px) scale(1);
+      }
+
+      40% {
+        transform: translate(100px, -100px) scale(1);
+      }
+
+      60% {
+        transform: translate(-100px, -100px) scale(1);
+      }
+
+      80% {
+        transform: translate(-100px, 100px) scale(1);
+      }
+
+      100% {
+        transform: translate(0) scale(1);
+      }
+    }
+
+    @keyframes move_04 {
+      0% {
+        transform: translate(0px) scale(0);
+      }
+
+      20% {
+        transform: translate(100px, -100px) scale(1);
+      }
+
+      40% {
+        transform: translate(-100px, -100px) scale(1);
+      }
+
+      60% {
+        transform: translate(-100px, 100px) scale(1);
+      }
+
+      80% {
+        transform: translate(100px, 100px) scale(1);
+      }
+
+      100% {
+        transform: translate(0) scale(1);
+      }
+    }
+
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {}
+
+    section {
+      padding: 60px 0;
+      min-height: 100vh;
+    }
+
+    a,
+    a:hover,
+    a:focus,
+    a:active {
+      text-decoration: none;
+      outline: none;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .main-footer {
+      position: absolute;
+      background: #1e2129;
+      width: 96.1%;
+      height: 500px;
+      top: 182rem;
+
+    }
+
+    .footer-content {
+      position: relative;
+      padding: 85px 0px 80px 0px;
+    }
+
+    .footer-content:before {
+      position: absolute;
+      content: '';
+      background: url(https://i.ibb.co/jyRLrBZ/world-map.png);
+      width: 744px;
+      height: 365px;
+      top: 50px;
+      right: 8rem;
+      background-size: cover;
+      background-repeat: no-repeat;
+      animation-name: float-bob;
+      animation-duration: 30s;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+      -webkit-animation-name: float-bob;
+      -webkit-animation-duration: 30s;
+      -webkit-animation-iteration-count: infinite;
+      -webkit-animation-timing-function: linear;
+      -moz-animation-name: float-bob;
+      -moz-animation-duration: 30s;
+      -moz-animation-iteration-count: infinite;
+      -moz-animation-timing-function: linear;
+      -ms-animation-name: float-bob;
+      -ms-animation-duration: 30s;
+      -ms-animation-iteration-count: infinite;
+      -ms-animation-timing-function: linear;
+      -o-animation-name: float-bob;
+      -o-animation-duration: 30s;
+      -o-animation-iteration-count: infinite;
+      -o-animation-timing-function: linear;
+    }
+
+    .footer-content .logo-widget {
+      position: relative;
+      margin-top: -5px;
+    }
+
+    .footer-content .logo-widget .footer-social li {
+      position: relative;
+      display: inline-block;
+      margin-right: 9px;
+    }
+
+    .footer-content .logo-widget .footer-social li:last-child {
+      margin-right: 0px;
+    }
+
+    .footer-content .logo-widget .footer-social li a {
+      position: relative;
+      display: inline-block;
+      width: 42px;
+      height: 42px;
+      line-height: 42px;
+      background: #2e3138;
+      color: #9ea0a9;
+      text-align: center;
+      border-radius: 50%;
+    }
+
+    .footer-content .logo-widget .footer-social li a:hover {
+      color: #ffffff;
+      background: #ff5e14;
+    }
+
+    .footer-content .logo-widget .logo-box {
+      margin-bottom: 25px;
+    }
+
+    .footer-content .logo-widget .text p {
+      color: #9ea0a9;
+      margin-bottom: 32px;
+    }
+
+    .footer-content .footer-title {
+      position: relative;
+      font-size: 25px;
+      line-height: 35px;
+      font-family: 'Playfair Display', serif;
+      color: #ffffff;
+      font-weight: 700;
+      margin-bottom: 27px;
+    }
+
+    .footer-content .service-widget .list li {
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .footer-content .service-widget .list li a {
+      position: relative;
+      display: inline-block;
+      color: #9ea0a9;
+    }
+
+    .footer-content .service-widget .list li a:hover {
+      color: #ff5e14;
+    }
+
+    .footer-content .contact-widget p {
+      color: #9ea0a9;
+      margin-bottom: 15px;
+    }
+
+    .footer-content .contact-widget {
+      margin-left: 90px;
+    }
+
+    .footer-content .contact-widget .footer-title {
+      margin-bottom: 29px;
+    }
+
+    /** footer-bottom **/
+
+    .footer-bottom {
+      width: 96.7%;
+      position: absolute;
+      background: #13151a;
+      padding: 25px 0px 22px 0px;
+      top: 213rem;
+    }
+
+    .footer-bottom .copyright,
+    .footer-bottom .copyright a,
+    .footer-bottom .footer-nav li a {
+      position: relative;
+      color: #9ea0a9;
+    }
+
+    .footer-bottom .copyright a:hover,
+    .footer-bottom .footer-nav li a:hover {
+      color: #ff5e14;
+    }
+
+    .footer-bottom .footer-nav {
+      position: relative;
+      text-align: right;
+    }
+
+    .footer-bottom .footer-nav li {
+      position: relative;
+      display: inline-block;
+      margin-left: 29px;
+    }
+
+    .footer-bottom .footer-nav li:first-child {
+      margin-left: 0px;
+    }
+
+    .footer-bottom .footer-nav li:before {
+      position: absolute;
+      content: '';
+      background: #9ea0a9;
+      width: 1px;
+      height: 14px;
+      top: 7px;
+      left: -18px;
+    }
+
+    .footer-bottom .footer-nav li:first-child:before {
+      display: none;
+    }
+
+    .logo-box img {
+      max-width: 220px;
+    }
+
+
+  
+   
+
+
+    /* -----------------------
+animation big 広がる玉 4s~5.6s
+----------------------- */
+    .big {
+      position: absolute;
+      top: 10rem;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .big div {
+      position: absolute;
+      top: calc((50% - 1500px));
+      left: calc((47% - 1500px));
+      width: 3000px;
+      height: 3000px;
+      border-radius: 50%;
+      transform: scale(0);
+    }
+
+    .big div:nth-child(1) {
+      background: #fffcee;
+      animation: big .5s 4s forwards;
+    }
+
+    .big div:nth-child(2) {
+      background: #bd8e99;
+      animation: big .5s 4.5s forwards;
+    }
+
+    .big div:nth-child(3) {
+      background: #9e3f57;
+      animation: big .5s 5s forwards;
+    }
+
+    @keyframes big {
+      0% {
+        transform: scale(0);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    /* -----------------------
+animation tri 突き上げる三角 ~5.9s
+----------------------- */
+    .tri {
+      position: absolute;
+      bottom: -300vw;
+      left: -100vw;
+
+      height: 0;
+      border-left: 150vw solid rgba(255, 0, 0, 0);
+      border-right: 150vw solid rgba(255, 0, 0, 0);
+      border-bottom: 300vw solid black;
+      animation: tri .6s 5.3s linear forwards;
+    }
+
+    @keyframes tri {
+      100% {
+        transform: translateY(-300vw);
+      }
+    }
+
+    /* -----------------------
+animation squ 現れる四角 7.3s
+----------------------- */
+    .squ {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .squ div {
+      position: absolute;
+      top: calc((10% - 50px));
+      left: calc((47% - 50px));
+      width: 100px;
+      height: 100px;
+      background: #3a6e9a;
+      border-radius: 50%;
+      transform: scale(0);
+    }
+
+    .squ div:nth-child(1) {
+      animation: squ .6s 5.8s cubic-bezier(0, 0.73, 0.54, 2.4) forwards;
+    }
+
+    .squ div:nth-child(2) {
+      animation: moveSqu_01 .8s 6.5s forwards;
+    }
+
+    .squ div:nth-child(3) {
+      animation: moveSqu_02 .8s 6.5s forwards;
+    }
+
+    .squ div:nth-child(4) {
+      animation: moveSqu_03 .8s 6.5s forwards;
+    }
+
+    @keyframes squ {
+      0% {
+        transform: translateY(100px) scale(0);
+      }
+
+      20% {
+        transform: translateY(100px) scale(1);
+      }
+
+      99% {
+        transform: translateY(0) scale(1);
+      }
+
+      100% {
+        transform: translateY(0) scale(0);
+      }
+    }
+
+    @keyframes moveSqu_01 {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-300px);
+        border-radius: 0;
+      }
+    }
+
+    @keyframes moveSqu_02 {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(0px);
+        border-radius: 0;
+      }
+    }
+
+    @keyframes moveSqu_03 {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(300px);
+        border-radius: 0;
+      }
+    }
+
+    /* -----------------------
+animation end  
+----------------------- */
+     .move {
+            font-family: Copperplate;
+            cursor: pointer;
+      }
+
+    .maincontrol {
+      top: 100rem;
+      position: absolute;
+      width: 96.1%;
+      height: 600px;
+      overflow: hidden;
+    }
+
+    .end {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .end div {
+      position: absolute;
+      top: calc((50% - 50px));
+      left: calc((50% - 50px));
+      width: 100px;
+      height: 100px;
+      font-size: 70px;
+      color: #fff;
+      line-height: 100px;
+      text-align: center;
+      opacity: 0;
+      animation: end 1s 7.4s forwards;
+    }
+
+    #screen {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transition: height 1s;
+    }
+
+    .end div:nth-child(1) {
+      transform: translateX(-300px);
+    }
+
+    .end div:nth-child(3) {
+      transform: translateX(300px);
+    }
+
+    @keyframes end {
+      100% {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="cursor">
+
+  </div>
+  <div class="top-yellow ml-auto " style="font-family: sans-serif;">
+    <marquee behavior="scroll" direction="left" scrollamount="12"style="font-family:Copperplate;">Lorem ipsum dolor sit amet consectetur adipisicing
+      elit. Rerum, doloribus impedit. Nobis et maiores odio eius sint dignissimos ducimus magnam.</marquee>
+
+  </div>
+
+  <div class="heading">
+    <h1><img src="assets/images/SamArtzone-.gif" style="animation-iteration-count: 1;" alt=""></h1>
+  </div>
+
+
+  <div class="highlight">
+    <h2   >LOOK LIKE AN EXPERT<br>
+      RIGHT FROM THE START
+    </h2>
+
+  </div>
+  <div class="highlight2">
+    <h3 style="margin-top:1.2rem;font-family:Copperplate;">HEAD YOUR WEBSITE WITH A GORGEIOUS WEBSITE</h3>
+  </div>
+
+
+  <div id="nav" style="position: fixed;">
+
+  </div>
+
+  <nav role="navigation">
+
+    <div id="menuToggle">
+      <!--
+        A fake / hidden checkbox is used as click reciever,
+        so you can use the :checked selector on it.
+        -->
+      <input type="checkbox" />
+
+      <!--
+        Some spans to act as a hamburger.
+        
+        They are acting like a real hamburger,
+        not that McDonalds stuff.
+        -->
+      <span></span>
+      <span></span>
+      <span></span>
+
+      <!--
+        Too bad the menu has to be inside of the button
+        but hey, it's pure CSS magic.
+        -->
+      <ul id="menu"  >
+        <a href="#" class="item" style="font-family:Copperplate;" onclick="moveItem(this, 800)">
+          <li>Home</li>
+        </a>
+        <a href="#" class="move" style="font-family:Copperplate;" onclick="moveItem(this, 800)">
+          <li>About</li>
+        </a>
+        <a href="#" class="move" style="font-family:Copperplate;" onclick="moveItem(this, 1300)">
+          <li>Portifolio</li>
+        </a>
+        <a href="#" class="move" style="font-family:Copperplate;" onclick="moveItem(this, 2250)">
+          <li>Choose</li>
+        </a>
+        <a href="#" class="move" style="font-family:Copperplate;" onclick="moveItem(this, 2510)">
+          <li>Contact</li>
+        </a>
+
+      </ul>
+    </div>
+    <div id="screen"></div>
+  </nav>
+
+
+ 
+
+  <div class="logo">
+    <img src="assets/images/LOGO PNG  (1).png" style="width:65px;height:65px; position:absolute;left:100.2rem;" alt="">
+  </div>
+
+  <div class="about">
+    <p style="width:300px;height:65px; position:absolute;left:100.6rem;top:58rem;;color:black;writing-mode: vertical-lr;font-size: 35px;"
+      alt="">ABOUT</p>
+    <p style="width:300px;height:65px; position:absolute;left:100.6rem;top:67rem;;color:black;writing-mode: vertical-lr;font-size: 35px;"
+      alt=""> US</p>
+  </div>
+  <div class="about">
+    <p style="width:65px;height:65px; position:absolute;left:100.6rem;top:95rem;;color:black;writing-mode: vertical-lr;font-size: 35px;"
+      alt="">PORTFOLIO</p>
+  </div>
+  <div class="about">
+    <p style="width:65px;height:65px; position:absolute;left:100.6rem;top:144rem;;color:black;writing-mode: vertical-lr;font-size: 35px;"
+      alt="">CHOOSE</p>
+  </div>
+  <div class="about">
+    <p style="width:65px;height:65px; position:absolute;left:100.6rem;top:163rem;;color:black;writing-mode: vertical-lr;font-size: 35px;"
+      alt="">CONTACT</p>
+  </div>
+
+  <div class="scroll-items">
+
+  </div>
+
+
+
+  <div class="irrrguralshape">
+    <img src="assets/images/icon web .png" alt="icon">
+  </div>
+
+
+  <div class="irrrguralshape2">
+    <img src="assets/images/icon web .png" alt="icon">
+  </div>
+
+
+
+
+
+  <div class="aboutus" id="aboutus" style="position: absolute;top:55rem; left:65rem;">
+    <h2> </h2>
+    <P style="font-family:Copperplate;">I am always looking for new ways to express myself
+      and I strive to create the best work possible.
+      I am driven by my desire to design something
+      beautiful and unique using my graphic design skills.
+
+
+
+    </P>
+  </div>
+
+
+
+  <section class="portifolio" id="portifolio">
+    <h2 style="margin-top:80rem; margin-left:43rem;"></h2>
+    <h4 style="position:absolute;top:61rem;right:15rem;font-family:Copperplate;">"Unlock the extraordinary, designed according to your dreams. Our design portfolio is a journey through the mindscapes of people like you. We turn imagination into reality, crafting visuals that echo your thoughts, aspirations, and desires. Every project is a tapestry of your collective imagination, woven into a vivid, captivating reality. Step into a world where your visions take center stage, and let's explore the boundless possibilities of design, through the lens of your mind."</h4>
+
+    <div class="maincontrol">
+      <div class="circle">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="big">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="tri">
+
+
+      </div>
+
+
+      <div class="squ">
+        <div>
+          <img src="assets/images/Honeyman 1.jpg" style="width:200px;height:200px; transform: scale(1);" alt="">
+
+        </div>
+        <div>
+          <img src="assets/images/Honeyman 2.jpg" style="width:200px;height:200px; transform: scale(1);" alt="">
+          <p style="margin-left: 4rem;margin-top: 1rem;">LOGO</p>
+        </div>
+        <div>
+          <img src="assets/images/Honeyman 3.jpg" style="width:200px;height:200px; transform: scale(1);" alt="">
+          <p style="margin-left: 3.5rem;margin-top: 1rem;">BANNER</p>
+        </div>
+        <div>
+          <img src="assets/images/Honeyman 4.jpg" style="width:200px;height:200px; transform: scale(1);" alt="">
+          <p style="margin-left: 2.6rem;margin-top: 1rem;">WEBDESIGN</p>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="owl-carousel owl-theme" id="owl-carousal2" style="position:absolute;top:126rem;left:2rem;right:4rem;">
+
+      <div class="item" style="width:150px;height:120px;background:white;"> </div>
+      <div class="item" style="width:150px;height:120px;background:white;"> </div>
+      <div class="item" style="width:150px;height:120px;background:white;"> </div>
+      <div class="item" style="width:150px;height:120px;background:white;"> </div>
+      <div class="item" style="width:150px;height:120px;background:white;"> </div>
+      <div class="item" style="width:150px;height:120px;background:white;"> </div>
+
+
+    </div>
+  </section>
+
+ 
+  
+
+    <!-- message -->
+
+    <div class="whatido" id="whatido">
+      <div class="row">
+        <div class="main">
+          <h2></h2>
+          <p>"I craft visual stories, bringing ideas to life through design.<br>From branding to user experiences, I transform concepts into<br>captivating reality. Let's turn your vision into a design<br>masterpiece.
+          </p>
+          <Button class="hire-btn" id="send-btn"  type="submit" style="font-family:Copperplate;">Hire Me</Button>
+  
+        </div>
+  
+  
+  
+  
+      </div>
+  
+      <!-- message -->
+      <div class="msg animate slide-in-down"></div>
+      <!-- end message -->
+  
+      <div >
+        <p id="pop-text1">BRAND IDENTITY</p><button class="btn success " target="_blank" >
+          <img class="icon-hov" id="pop" src="assets/images/icon.png" cl style="width:20px;height:20px;" alt="">
+  
+        </button>
+        <p id="pop-text2">WEB DESIGN</p><button class="btn danger" target="_blank">
+          <img class="icon-hov" id="pop2" src="assets/images/icon.png" style="width:20px;height:20px;" alt="">
+  
+        </button>
+        <P id="pop-text3">LOGO DESIGN</P><button class="btn warning" target="_blank">
+          <img class="icon-hov" id="pop3" src="assets/images/icon.png" style="width:20px;height:20px;" alt="">
+  
+        </button>
+        <P id="pop-text4">ILLUSTRATION</P><button class="btn warning" target="_blank">
+          <img class="icon-hov" id="pop4" src="assets/images/icon.png" style="width:20px;height:20px;" alt="">
+  
+        </button>
+  
+      </div>
+  
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+    
+  
+
+  <div class="getenquire" id="enquire">
+    <div class="enquirerow">
+      <div class="contact">
+        <form action="connect.php" method="post">
+          <div class="form-input">
+            <input type="text" name="name" id="" style="font-family:Copperplate;" placeholder="Full Name">
+          </div>
+          <div class="form-input">
+            <input type="email" name="email" style="font-family:Copperplate;" id="" placeholder=" Email">
+          </div>
+          <div class="form-input">
+            <input type="number" name="mobile" style="font-family:Copperplate;" id="" placeholder=" Mobile">
+          </div>
+          <div class="form-input">
+            <textarea name="message" id="" cols="31.9" rows="4" style="font-family:Copperplate;" placeholder="Type your message here"></textarea>
+          </div>
+          <Button class="hire-btn" id="send-btn"  type="submit" style="font-family:Copperplate;">Send</Button>
+
+         
+        </form>
+      </div>
+
+      <div class="address">
+        <h2>GET ENQUIRE NOW</h2>
+        <P>Do you have any questions about our product or<br> service? Would you like to learn more about how <br>we can help
+          you achieve your goals? If so, we<br>encourage you to enquire now.</P>
+        <h5 class="address-section" style="line-height:1.5;font-family:Copperplate;">ADD:- 9/1 PARDA BAGH DARYA GANJ<br>
+          NEW DELHI - 110002<br>
+          P.NO:- +917289053244<br>
+          EMAIL:- SG769601@GMAIL.COM
+        </h5>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="row">
+          <div class="col-lg-4 col-md-6 col-sm-12 footer-column">
+            <div class="logo-widget footer-widget">
+              <figure class="logo-box"><a href="#"><img src="assets/images/LOGO PNG  (1).png" alt=""
+                    style="width:100px;"></a></figure>
+              <div class="text">
+                <p style="font-size:15px;">I am always looking for new ways to
+                  express myself and I strive to create
+                  the best work possible. I am driven by
+                  my desire to design something beautiful
+                  and unique using my graphic design
+                  skills.</p>
+              </div>
+              <ul class="footer-social">
+                <li><a href="https://instagram.com/samartzone27?igshid=bWQwMDJteHluMGls"><i class="fa fa-instagram"></i></a></li>
+                <li><a href="https://www.behance.net/19cb362d"><i class="fa fa-behance"></i></a></li>
+                <li><a href="https://www.linkedin.com/in/sumit-gupta-854b33259?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i class="fa fa-linkedin"></i></a></li>
+                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-12 offset-lg-2 footer-column">
+            <div class="service-widget footer-widget">
+              <div class="footer-title"style="font-family:Copperplate;">Services</div>
+              <ul class="list">
+                <li><a href="#"style="font-family:Copperplate;">Graphice Design</a></li>
+                <li><a href="#"style="font-family:Copperplate;">Web Design</a></li>
+                <li><a href="#"style="font-family:Copperplate;">Logo Design</a></li>
+                <li><a href="#"style="font-family:Copperplate;">Banner</a></li>
+                <li><a href="#"style="font-family:Copperplate;">SM Post</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-12 footer-widget">
+            <div class="contact-widget footer-widget">
+              <div class="footer-title" style="font-family:Copperplate;">Contacts</div>
+              <div class="text">
+                <p style="font-size:15px;letter-spacing:0px"style="font-family:Copperplate;">9/1 Parda Bagh Darya Ganj New Delhi -110002</p>
+                <p style="font-size:15px;letter-spacing:0px"style="font-family:Copperplate;">+917289053244</p>
+                <p style="font-size:15px;letter-spacing:0px;"style="font-family:Copperplate;">SG769601@GMail.Com</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- main-footer end -->
+  <div class="footer-bottom" style="width: 96.1%;">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 column">
+          <div class="copyright"><a href="#">&copy; 2023 SamArtzone - All Right Reserved </a> </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 column">
+          <ul class="footer-nav">
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const cursor = document.querySelector(".cursor");
+    document.addEventListener("mousemove", (e) => {
+
+      let x = e.pageX;
+      let y = e.pageY;
+
+      cursor.style.top = y + "px";
+      cursor.style.left = x + "px";
+      cursor.style.display = "block";
+
+
+    });
+
+    document.addEventListener("mouseout", () => {
+      cursor.style.display = "none";
+
+    });
+  </script>
+
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+    </script>
+
+
+  <script>
+    let items = document.querySelectorAll('.carousel .carousel-item')
+
+    items.forEach((el) => {
+      const minPerSlide = 4
+      let next = el.nextElementSibling
+      for (var i = 1; i < minPerSlide; i++) {
+        if (!next) {
+          // wrap carousel by using first child
+          next = items[0]
+        }
+        let cloneChild = next.cloneNode(true)
+        el.appendChild(cloneChild.children[0])
+        next = next.nextElementSibling
+      }
+    })
+
+
+  </script>
+
+
+
+
+  <script>
+    var owl = $('.owl-carousel');
+    owl.owlCarousel({
+      items: 4,
+      // items change number for slider display on desktop
+
+      loop: true,
+      margin: 10,
+      autoplay: true,
+      autoplayTimeout: 1000,
+      autoplayHoverPause: true,
+
+      responsive: {
+        0: {
+          items: 1
+        },
+        600: {
+          items: 3
+        },
+        1000: {
+          items: 6
+        }
+      }
+
+
+
+
+    });
+
+
+  </script>
+
+ <script>
+    function moveItem(move, height) {
+      // Add smooth scrolling animation, you can customize the duration and timing function.
+      window.scrollTo({
+          top: height,
+          behavior: 'smooth',
+      });
+    }
+  </script>
+
+
+
+  <script>
+    (function () {
+      // data
+      var clear;
+      var msgDuration = 1000; // 2 seconds
+      var $msgSuccess = 'A quick brown fox jumpes over a white lazy dog A quick brown fox jumpes over a white lazy dog A quick brown fox jumpes over a white lazy dog A quick brown fox jumpes over a white lazy dog :)';
+      var $msgDanger = 'A quick brown fox jumpes over a white lazy dog A quick brown fox jumpes over a white lazy dog A quick brown fox jumpes over a white lazy dog A quick brown fox jumpes over a white lazy dog :)';
+      var $msgWarning = 'A quick brown fox jumpes over a white lazy dog A quick brown fox jumpes over a white lazy dog A quick brown fox jumpes over a white lazy dog A quick brown fox jumpes over a white lazy dog :)';
+      var $msgInfo = 'A quick brown fox jumpes over a white lazy dog A quick brown fox jumpes over a white lazy dog A quick brown fox jumpes over a white lazy dog A quick brown fox jumpes over a white lazy dog :)';
+
+      // cache DOM
+      var $msg = $('.msg');
+      var $btnSuccess = $('.success');
+      var $btnDanger = $('.danger');
+      var $btnWarning = $('.warning');
+      var $btnInfo = $('.info');
+
+      // render message
+      function render(message) {
+
+        hide();
+
+        switch (message) {
+          case 'success':
+            $msg.addClass('msg-success active').text($msgSuccess);
+            break;
+          case 'danger':
+            $msg.addClass('msg-danger active').text($msgDanger);
+            break;
+          case 'warning':
+            $msg.addClass('msg-warning active').text($msgWarning);
+            break;
+          case 'info':
+            $msg.addClass('msg-info active').text($msgInfo);
+            break;
+        }
+      }
+
+      function timer() {
+        clearTimeout(clear);
+        clear = setTimeout(function () {
+          hide();
+        }, msgDuration)
+      }
+
+      function hide() {
+        $msg.removeClass('msg-success msg-danger msg-warning msg-info active');
+      }
+
+      // bind events
+      $btnSuccess.on('click', function () { render('success'); });
+      $btnDanger.on('click', function () { render('danger'); });
+      $btnWarning.on('click', function () { render('warning'); });
+      $btnInfo.on('click', function () { render('info'); });
+      $msg.on('transitionend', timer);
+
+    })();
+  </script>
+</body>
+
+</html>
